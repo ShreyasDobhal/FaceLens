@@ -154,6 +154,7 @@ def startSorting(method='knn',allowMultipleCopy=True,UI=None):
 
 # To run in non UI mode 
 
-# sortingOrder = ['Yash']
+# sortingOrder = ['Shreyas']
 # sortIntoFolders('/home/shreyas/Desktop/FaceRecog/Test/',sortingOrder)
 # startSorting(allowMultipleCopy=False)
+
