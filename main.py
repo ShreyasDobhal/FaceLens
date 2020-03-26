@@ -8,6 +8,7 @@ import sys
 from sort_files import sortIntoFolders,startSorting
 from threading import Thread
 from paths import *
+from accepted_extensions import IMAGE_FILES
 from glob import glob
 
 windowSize = [470,470]
@@ -15,7 +16,10 @@ windowLocation = [750,200]
 windowTitle = "Sort Images by Faces"
 tempFile = TEMP_FILE_PATH
 
-
+if len(sys.argv)<2:
+    messagebox.showerror("Error", "Select a directory/folder path to work on")
+    # font=("times new roman",20)
+    exit()
 
 class SampleApp(Tk):
 
@@ -254,10 +258,21 @@ class MainPage(Frame):
 if __name__ == "__main__":
     print ('python3 /home/shreyas/Desktop/FaceRecog/main.py '+sys.argv[1])
 
-    # messagebox.showinfo("Information",'python3 /home/shreyas/Desktop/FaceRecog/main.py '+sys.argv[1])
+    
     # messagebox.showerror("Error", "Error message")
     # messagebox.showwarning("Warning","Warning message")
-    # exit() 
+    # exit()
+
+    currentfolderpath = sys.argv[1]
+    if currentfolderpath[-1]!='/':
+        currentfolderpath+='/'
+    cnt = 0
+    for ext in IMAGE_FILES:
+        cnt += len(glob(currentfolderpath+ext))
+    if cnt==0:
+        messagebox.showerror("Error", "No image files to work on")
+    
+
     app = SampleApp()
     app.geometry(str(windowSize[0])+"x"+str(windowSize[1])+"+"+str(windowLocation[0])+"+"+str(windowLocation[1])+"")
     app.title(windowTitle)

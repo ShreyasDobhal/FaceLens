@@ -1,1 +1,1 @@
-IMAGE_FILES = ['*.jpg','*.jpeg','*.png']
+IMAGE_FILES = ['*.jpg','*.jpeg']
